@@ -2,7 +2,7 @@ name: Frontend → EKS Deploy
 
 on:
   push:
-    branches: [main]
+    branches: [dev]
   workflow_dispatch:
 
 # ──────────────────────────────────────────────────────────────────────────
@@ -40,9 +40,9 @@ jobs:
           TAG: ${{ github.sha }}
         run: |
           docker build \
-            --build-arg REACT_APP_API_BASE_URL="" \
-            -t $ECR:$TAG \
-            -t $ECR:latest .
+            --build-arg "REACT_APP_API_BASE_URL=${{ secrets.REACT_APP_API_BASE_URL }}" \
+            -t "$ECR:$TAG" \
+            -t "$ECR:latest" .
           docker push $ECR:$TAG
           docker push $ECR:latest
 
