@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: ${FRONTEND_IMAGE}
+          image: 105588835975.dkr.ecr.us-east-2.amazonaws.com/sample-app-jk/frontend:latest
           ports:
             - containerPort: 80
           readinessProbe:
